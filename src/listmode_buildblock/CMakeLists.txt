@@ -8,6 +8,7 @@ set(${dir_LIB_SOURCES}
 	CListEvent 
 	CListModeData 
 	LmToProjData 
+	LmToTimeDiffs
         LmToProjDataBootstrap
 	LmToProjDataWithRandomRejection
         CListModeDataECAT8_32bit

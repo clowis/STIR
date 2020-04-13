@@ -126,13 +126,13 @@ get_next_record(CListRecordSimSET& record)
             //                            tofDifference = -tofDifference;
             //                        }
 
-            if ( (tofDifference >= binParams->maxTOF) ||
-                (tofDifference <= binParams->minTOF) ) {
+//            if ( (tofDifference >= binParams->maxTOF) ||
+//                (tofDifference <= binParams->minTOF) ) {
 
-                /* outside coincidence window, go to next photon */
-                continue;
+//                /* outside coincidence window, go to next photon */
+//                continue;
 
-            }
+//            }
 
             found = true;
             break;
@@ -254,13 +254,13 @@ get_next_record(CListRecordSimSET& record)
 //                            tofDifference = -tofDifference;
 //                        }
 
-                    if ( (tofDifference >= binParams->maxTOF) ||
-                        (tofDifference <= binParams->minTOF) ) {
+//                    if ( (tofDifference >= binParams->maxTOF) ||
+//                        (tofDifference <= binParams->minTOF) ) {
 
-                        /* outside coincidence window, go to next photon */
-                        continue;
+//                        /* outside coincidence window, go to next photon */
+//                        continue;
 
-                    }
+//                    }
                     return record.init_from_data(bluePhotons.at(0),
                                                  pinkPhotons.at(0),
                                                  coincidenceWeight,
@@ -347,13 +347,13 @@ get_next_record(CListRecordSimSET& record)
 //                            tofDifference = -tofDifference;
 //                        }
 
-                        if ( (tofDifference >= binParams->maxTOF) ||
-                            (tofDifference <= binParams->minTOF) ) {
+//                        if ( (tofDifference >= binParams->maxTOF) ||
+//                            (tofDifference <= binParams->minTOF) ) {
 
-                            /* outside coincidence window, go to next photon */
-                            continue;
+//                            /* outside coincidence window, go to next photon */
+//                            continue;
 
-                        }
+//                        }
 
                         return record.init_from_data(blue, pink, coincidenceWeight, tofDifference);
                     }

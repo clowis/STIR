@@ -29,7 +29,7 @@
     See STIR/LICENSE.txt for details
 */
 
-#include "stir/listmode/LmToProjData.h"
+#include "stir/listmode/LmToTimeDiffs.h"
 #include "stir/IO/InputFileFormatRegistry.h"
 
 #ifndef STIR_NO_NAMESPACES
@@ -67,12 +67,12 @@ int main(int argc, char * argv[])
           "and then stop.\n";
         std::cout << argc << std::endl;
         std::cout << argv[0] << "\n" << argv[1] << "\n" << argv[2] << std::endl;
-        LmToProjData application(argc == 3 ? argv[2] : 0);
+        LmToTimeDiffs application(argc == 3 ? argv[2] : 0);
         application.run_tof_test_function();
         exit(EXIT_SUCCESS);
       }
   }
-  LmToProjData application(argc==2 ? argv[1] : 0);
+    LmToTimeDiffs application(argc==2 ? argv[1] : 0);
   application.process_data();
 
   return EXIT_SUCCESS;

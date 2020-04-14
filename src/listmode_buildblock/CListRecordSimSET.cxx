@@ -68,8 +68,8 @@ void CListEventSimSET::init_from_data(const PHG_DetectedPhoton* _blue,
     tofDifference = _tofDifference;
 
     this->get_uncompressed_proj_data_info_sptr()->
-            find_scanner_coordinates_given_cartesian_coordinates(det2, det1,
-                                                                 ring2, ring1,
+            find_scanner_coordinates_given_cartesian_coordinates(det1, det2,
+                                                                 ring1, ring2,
                                                                  blue_coord,
                                                                  pink_coord);
 

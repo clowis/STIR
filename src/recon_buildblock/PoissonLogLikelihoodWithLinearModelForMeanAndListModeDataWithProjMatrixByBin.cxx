@@ -499,7 +499,7 @@ compute_sub_gradient_without_penalty_plus_sensitivity(TargetT& gradient,
 
         // In theory we have already done all these checks so we can
         // remove this if statement.
-        if (measured_bin.get_bin_value() != 1.0f
+        if (measured_bin.get_bin_value() == 0.0f
                 || measured_bin.segment_num() < proj_data_info_sptr->get_min_segment_num()
                 || measured_bin.segment_num()  > proj_data_info_sptr->get_max_segment_num()
                 || measured_bin.tangential_pos_num() < proj_data_info_sptr->get_min_tangential_pos_num()
@@ -512,7 +512,8 @@ compute_sub_gradient_without_penalty_plus_sensitivity(TargetT& gradient,
             continue;
         }
 
-        measured_bin.set_bin_value(1.0f);
+        // Remove as SimSET needs weights
+        //        measured_bin.set_bin_value(1.0f);
         // If more than 1 subsets, check if the current bin belongs to
         // the current.
 
@@ -527,19 +528,8 @@ compute_sub_gradient_without_penalty_plus_sensitivity(TargetT& gradient,
                 continue;
             }
         }
-
-            measured_bin.set_bin_value(1.0f);
-            // If more than 1 subsets, check if the current bin belongs to
-            // the current.
-            if (this->num_subsets > 1)
-            {
-                Bin basic_bin = measured_bin;
-                this->PM_sptr->get_symmetries_ptr()->find_basic_bin(basic_bin);
-                if (subset_num != static_cast<int>(basic_bin.view_num() % this->num_subsets))
-                    continue;
-            }
-            this->PM_sptr->get_proj_matrix_elems_for_one_bin(proj_matrix_row,
-                                                                      measured_bin);
+        this->PM_sptr->get_proj_matrix_elems_for_one_bin(proj_matrix_row,
+                                                         measured_bin);
 
         //in_the_range++;
         fwd_bin.set_bin_value(0.0f);
@@ -562,7 +552,7 @@ compute_sub_gradient_without_penalty_plus_sensitivity(TargetT& gradient,
             info( boost::format("Stored Events: %1% ") % num_stored_events);
 
         if ( measured_bin.get_bin_value() <= max_quotient *fwd_bin.get_bin_value())
-            measured_div_fwd = 1.0f /fwd_bin.get_bin_value();
+            measured_div_fwd = measured_bin.get_bin_value() /fwd_bin.get_bin_value();
         else
             continue;
 

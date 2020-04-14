@@ -406,6 +406,8 @@ get_bin_from_event(Bin& bin, const CListEvent& event) const
      event.get_bin(uncompressed_bin, *proj_data_info_cyl_uncompressed_ptr);
      if (uncompressed_bin.get_bin_value()<=0)
       return; // rejected for some strange reason
+     // - NE: As SimSET input is weighted this means 0 weight, which probably
+     // is safe to reject.
 
 
     // do_normalisation
